@@ -50,14 +50,93 @@ VisComm = pd.DataFrame(hometvselcol)
 print(f'Number of rows: {len(VisComm)}')
 ```
 
+# B. VISAYAS FEMALE DATAFRAME
+**Objective:** Create a second DataFrame named VisFemale containing students whose Hometown is Visayas and
+whose Gender is Female. Retain only:
+Name, Track, GEAS, Electronics, Average
+Display VisFemale. Then display only the rows of VisFemale whose Average is at least 60.
 
+For Part B. almost all the process is the same for Part A. such as the two-part filter but in this part of the assignment the filter is changed to filter those whose hometown is Visayas and gender is Female. The columns that need to be displayed is also changed but the syntax is generally also the same.
 
+The following operations and functions were used.
+```python
+Vhomet = board2.loc[board2['Hometown'] == 'Visayas']
+Fvhomet = Vhomet.loc[Vhomet['Gender'] == 'Female']
 
+Filtfvhomet = Fvhomet.loc[:,['Name', 'Track', 'GEAS', 'Electronics', 'Average']]
+```
+'Vhomet' and 'Fvhomet' is used to filter the data set to only show those who lives in Visayas and is female. While Filtfvhomet is the second filter used to only select the columns that are encoded.
 
+The following operations and functions were used to create the VisFemale DataFrame.
+```python
+VisFemale = pd.DataFrame(Filtfvhomet)
+```
 
+Lastly for this Part B. a third filter is needed but it should not alter the results inside the DataFrame VisFemale so the syntax below is used to display the DataFrame and at the same time check is the average of the one being displayed is greater than or equal 60 if it is less than 60 it automatically excludes it from the list but it does not remove it.
+```python
+display(VisFemale[VisFemale['Average']>=60])
+```
 
+# C. CATEGORY-AVERAGE VISUALIZATION
+**Objective:** Examine how the recorded Average differs across the three categorical features Track, Gender, and
+Hometown.
 
+a. For each feature, compute the mean of Average for every category using Pandas.
 
+b. Display the three summary tables.
+
+c. Create one figure containing three bar charts: mean Average by Track, by Gender, and by
+Hometown.
+
+d. Below the figure, write three concise statements identifying the category with the highest sample
+mean for each feature.
+
+Attached below are the different functions and operations to fulfill Part C.
+```python
+mean_track = board2.groupby('Track')['Average'].mean().reset_index()
+mean_gender = board2.groupby('Gender')['Average'].mean().reset_index()
+mean_hometown = board2.groupby('Hometown')['Average'].mean().reset_index()
+```
+The same syntax is used for all three applications but the columns where it would be extracted from is different thus the only modification in the syntax. The syntax groups the Data depending on the input such as the track, gender, and hometown which then computes for the mean for the averages of each person and compiles and groups it by track, gender, and hometown.
+
+```python
+display(mean_track)
+
+display(mean_gender)
+
+display(mean_hometown)
+```
+The function display is used to display the computed mean of averages for each category. Display is used since it is better than only using the print since print alters the look of the DataFrame while with display it shows it similar to the display of the DataFrame.
+
+```python
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+
+axes[0].bar(mean_track['Track'], mean_track['Average'], color='Yellow', edgecolor='black')
+axes[0].set_xlabel('Track')
+axes[0].set_ylabel('Mean Average')
+axes[0].set_title('Mean Average by Track')
+axes[0].set_ylim(0,80)
+
+axes[1].bar(mean_gender['Gender'], mean_gender['Average'], color='Blue', edgecolor='black')
+axes[1].set_xlabel('Gender')
+axes[1].set_ylabel('Mean Average')
+axes[1].set_title('Mean Average by Gender')
+axes[1].set_ylim(0,80)
+
+axes[2].bar(mean_hometown['Hometown'], mean_hometown['Average'], color='Green', edgecolor='black')
+axes[2].set_xlabel('Hometown')
+axes[2].set_ylabel('Mean Average')
+axes[2].set_title('Mean Average by Hometown')
+axes[2].set_ylim(0,80)
+
+fig.text(0.125, 0.0, 'Interpretation', weight='bold', fontsize=10)
+fig.text(0.125, -0.1, '(a.) The highest mean average for track is from Communication which is 67.975\n(b.) The highest mean average for gender is from Males which is 67.183\n(c.) The highest mean average for Hometown is from Luzon which is 68.083', fontsize=10)
+plt.show()
+```
+For part C and D I combined everything in one cell.
+
+Methods used:
+The function `fig, axes = plt.subplots(1, 3, figsize=(18, 5))`s used to create the graph since it creates 1 row and 3 columns of bars for the graph while the figsize part dictates how big each bar is.
 
 
 
