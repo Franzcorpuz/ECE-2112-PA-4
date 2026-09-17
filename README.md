@@ -27,6 +27,7 @@ Attached below is the syntax used:
 ```python
 board2['Average'] = board2[['Math', 'Electronics', 'GEAS', 'Communication']].mean(axis=1)
 ```
+This function computes for the mean across the different subjects to add to a column named 'Average'. This function also checks if there is already an existing column named average in which this would only edit the content, but when it detects that it does not exist it automatically adds the Average column.
 
 # A. VISAYAS COMMUNICATION DATAFRAME
 **Objective:** Create a DataFrame named VisComm containing students whose Hometown is Visayas and whose Track
@@ -41,6 +42,17 @@ homeTV = Vtrack.loc[Vtrack['Hometown'] == 'Visayas']
 
 hometvselcol = homeTV.loc[:,['Name', 'Gender', 'Math', 'Electronics', 'Average']]
 ```
+The 'Vtrack' and 'homeTV' variable is the first part of the filter that selects only the Communication track and the ones whose hometown is in Visayas. Therefore, minimizing the pool where the second filter would be applied. While the second part of the filter is the 'hometvselcol' where it selects and display the columns that are encoded within the syntax. The .loc was also used so as to not change or modify the main Dataset when performing functions.
+
+To create the VisComm DataFrame the 'hometvselcol' is used to create the main DataFrame named VisComm since it is the data set that has gone through the filters. Below are the functions and operations used to create the DataFrame and to show the number of rows of the DataFrame.
+```python
+VisComm = pd.DataFrame(hometvselcol)
+print(f'Number of rows: {len(VisComm)}')
+```
+
+
+
+
 
 
 
