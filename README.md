@@ -136,7 +136,12 @@ plt.show()
 For part C and D I combined everything in one cell.
 
 Methods used:
+
 The function `fig, axes = plt.subplots(1, 3, figsize=(18, 5))`s used to create the graph since it creates 1 row and 3 columns of bars for the graph while the figsize part dictates how big each bar is.
+
+To create and visualize the graph, these standard functions and operations were used for each category. This is also the same line of code that would be used in the different category, except for the variable names and the 'axes'. 'axes[0].bar(mean_track['Track'], mean_track['Average'], color='Yellow', edgecolor='black')' was used to create the bar od the graph where in the data will come from the track group and teh column Average you canalso set the color of the bar and its outline color. 'axes[0].set_ylabel('Mean Average')' and 'axes[0].set_xlabel('Track')' sets the label for each axis such as the Track on the x-axis and the Mean Average on the y-axis. 'axes[0].set_title('Mean Average by Track')' sets the title for the specific bar of the graph below the x-axis label. Lastly, 'axes[0].set_ylim(0,80)' sets the y-axis limits to display the range 0 to 80, making the graph easier to read.
+
+For interpreting the graphs, the 'fig.text' functions were used. I cannot paste it here since it would be too long, but the first figure text function establishes the Title of the interpretation, which in this case is Interpretation. While the second fig.text was used was the analysis of the graphs which is written normally.
 
 
 
@@ -158,3 +163,5 @@ September 17, 2026 - Created the Repository
 September 17, 2026 - Finished and uploaded the code
 
 September 17, 2026 - Started with the readme file
+
+September 18, 2026 - Minor revisions andfinalized teh readme file
